@@ -1,5 +1,10 @@
 # Change log
 
+## 2026-11-24 — Persist task completion
+
+- Updated `app/service.py` to replace the completed task in the loaded collection and save it, so the completion timestamp and status survive subsequent reads.
+- Verification: reproduced the old behavior with isolated JSON storage, then verified persistence with isolated service checks and live `POST /tasks/1/complete` followed by `GET /tasks/1` on port 8001. Both API responses showed `status=done` and the same non-null `completed_at`. Restored `data/tasks.json` after the API check.
+
 ## 2026-11-24 — Fix task status filtering
 
 - Updated `app/service.py` to compare each task status with the requested `status` value, so `status=open` and `status=done` return matching tasks.
