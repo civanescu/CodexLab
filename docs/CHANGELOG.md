@@ -1,5 +1,10 @@
 # Change log
 
+## 2026-11-24 — Add task search filtering
+
+- Updated `app/service.py` to filter tasks by case-insensitive matches in title or description, composing the search with the existing status filter while leaving omitted-`q` requests unchanged.
+- Verification: service-level checks passed for case-insensitive title matching, description matching, combined status and search filters, and omitted-`q` behavior. Requested curl checks could not run because Uvicorn was denied permission to bind to `127.0.0.1:8000`.
+
 ## 2026-11-24 — Persist task completion
 
 - Updated `app/service.py` to replace the completed task in the loaded collection and save it, so the completion timestamp and status survive subsequent reads.
