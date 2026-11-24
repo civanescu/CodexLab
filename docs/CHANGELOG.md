@@ -1,5 +1,10 @@
 # Change log
 
+## 2026-11-24 — Fix task status filtering
+
+- Updated `app/service.py` to compare each task status with the requested `status` value, so `status=open` and `status=done` return matching tasks.
+- Verification: service-level checks pass against the sample data (3 open tasks and 1 done task). HTTP verification could not run because port 8000 was unavailable and the environment denied binding the Uvicorn server.
+
 ## 2026-11-24 — Implementation workflow guidance
 
 - Expanded `AGENTS.md` and the `change-docs` skill with the requested workflow: inspect before editing, report findings before the first patch, run setup when needed, and rerun relevant verification after each code change.
